@@ -1,7 +1,10 @@
 const express = require("express");
 
 const app = express();
+const cors = require("cors");
+const logger = require("morgan");
 const chalk = require("chalk");
+const bodyParser = require("body-parser");
 
 const { config } = require("./config/config");
 const MongooseLib = require("./lib/mongoose");
@@ -9,6 +12,13 @@ const MongooseLib = require("./lib/mongoose");
 // ====== CONNECT MONGODB ====== //
 const connect = new MongooseLib();
 connect.connect();
+
+// ====== MIDDLEWARE ====== //
+app.use(logger("dev"));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.json());
+app.use(cors({ origin: true, credentials: true }));
 
 app.get("/", (req, res, next) => {
   res.send("Hello Word");
