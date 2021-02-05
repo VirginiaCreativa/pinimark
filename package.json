@@ -1,0 +1,44 @@
+{
+  "name": "pinimark",
+  "version": "1.0.0",
+  "description": "Diccianios varios apis",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VirginiaCreativa/pinimark.git"
+  },
+  "author": "Virginia.Creativa",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/VirginiaCreativa/pinimark/issues"
+  },
+  "homepage": "https://github.com/VirginiaCreativa/pinimark#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "chalk": "^4.1.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "eslint": "^7.19.0",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-config-prettier-standard": "^4.0.0",
+    "eslint-config-standard": "^16.0.2",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^3.3.1",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-react": "^7.22.0",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.11.15",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.7",
+    "prettier": "^2.2.1",
+    "prettier-config-standard": "^4.0.0",
+    "prettier-standard": "^16.4.1",
+    "typescript": "^4.1.3"
+  }
+}
