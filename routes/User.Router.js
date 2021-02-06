@@ -15,7 +15,7 @@ function UserRouter(app) {
       );
   });
 
-  router.post("/", (req, res, next) => {
+  router.post("/", async (req, res, next) => {
     const userAdd = {
       name: req.body.name,
       email: req.body.email,
@@ -24,8 +24,8 @@ function UserRouter(app) {
     };
     UserController.CreateUser(userAdd)
       .then((data) => {
-        const validation = UserValidate.validateAsync(req.body, userAdd);
-        console.log(validation);
+        const result = UserValidate.validateAsync(req.body, userAdd);
+        console.log(result);
         response.success(req, res, data, "Create User", 201);
       })
       .catch((err) =>
