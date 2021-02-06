@@ -1,6 +1,7 @@
 const express = require("express");
 const response = require("../middlewares/Response");
-const UserControllers = require("../controllers/Movies.Controller");
+const UserController = require("../controllers/User.Controller");
+const UserValidate = require("../models/User.Validation.Model");
 
 function UserRouter(app) {
   const router = express.Router();
@@ -15,14 +16,18 @@ function UserRouter(app) {
   });
 
   router.post("/", (req, res, next) => {
-    const add = {
+    const userAdd = {
       name: req.body.name,
       email: req.body.email,
       password: req.body.password,
       avatar: req.body.avatar,
     };
-    UserControllers.createUser(add)
-      .then((data) => response.success(req, res, data, "Create User", 201))
+    UserController.CreateUser(userAdd)
+      .then((data) => {
+        const validation = UserValidate.validateAsync(req.body, userAdd);
+        console.log(validation);
+        response.success(req, res, data, "Create User", 201);
+      })
       .catch((err) =>
         response.error(req, res, "Infomacion invalida", 400, err)
       );

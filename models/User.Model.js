@@ -1,5 +1,4 @@
 const mongoose = require("mongoose");
-const { ModuleResolutionKind } = require("typescript");
 
 const UserSchema = new mongoose.Schema({
   name: {

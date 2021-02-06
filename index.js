@@ -8,6 +8,7 @@ const bodyParser = require("body-parser");
 
 const { config } = require("./config/config");
 const MongooseLib = require("./lib/mongoose");
+const UserRouter = require("./routes/User.Router");
 
 // ====== CONNECT MONGODB ====== //
 const connect = new MongooseLib();
@@ -19,6 +20,9 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cors({ origin: true, credentials: true }));
+
+// ====== CONTROLLERS ROUTES ====== //
+UserRouter(app);
 
 app.get("/", (req, res, next) => {
   res.send("Hello Word");
