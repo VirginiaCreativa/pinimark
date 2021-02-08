@@ -1,7 +1,12 @@
 const UserServices = require("../services/User.Server");
 
-exports.CreateUser = (tags) =>
-  new Promise((resolve, reject) => resolve(UserServices.Create(tags)));
+exports.CreateUser = (res, email, tags) =>
+  new Promise((resolve, reject) =>
+    resolve(UserServices.Create(res, email, tags))
+  );
 
-exports.getUser = () =>
-  new Promise((resolve, reject) => resolve(UserServices.User()));
+exports.getUsers = (tags) =>
+  new Promise((resolve, reject) => resolve(UserServices.Users(tags)));
+
+exports.getUser = (id) =>
+  new Promise((resolve, reject) => resolve(UserServices.User(id)));
