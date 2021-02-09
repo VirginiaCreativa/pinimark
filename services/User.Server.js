@@ -2,6 +2,7 @@ const UserSchema = require("../models/User.Model");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 const { config } = require("../config/config");
+const { token } = require("morgan");
 
 async function Create(req, res) {
   const { name, email, password, avatar } = req.body;
@@ -67,10 +68,34 @@ async function UserUpdate(req, res) {
 
 async function Login(req, res) {
   const { email, password } = req.body;
-  const user = await UserSchema.findOne({ email, password }).select(
-    "-password"
-  );
-  return user || {};
+  try {
+    const user = await UserSchema.findOne({ email });
+
+    if (!user) {
+      return res.status(400).send({ message: "Invalida Email" });
+    }
+    const isMatch = await bcrypt.compare(password, user.password);
+    if (!isMatch) {
+      return res.status(400).send({ message: "Invalida Password" });
+    }
+
+    const payload = { user: { id: user.email } };
+    jwt.sign(payload, config.jwtSecret, { expiresIn: 36000 }, (err, token) => {
+      if (err) {
+        throw err;
+      } else {
+        res.status(201).send({
+          message: "Login In",
+          data: user,
+          token,
+        });
+      }
+    });
+
+    return user || {};
+  } catch (error) {
+    res.status(500).send("Server error");
+  }
 }
 
 module.exports = { Create, Users, User, UserUpdate, Login };

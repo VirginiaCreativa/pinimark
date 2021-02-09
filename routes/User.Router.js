@@ -33,13 +33,9 @@ function UserRouter(app) {
     }
   );
 
-  router.post(
-    "/login/in",
-    validator.body(UserValidateSchema),
-    (req, res, next) => {
-      UserController.getLogin(req, res);
-    }
-  );
+  router.post("/login/in", (req, res, next) => {
+    UserController.getLogin(req, res);
+  });
 
   router.put("/login/update/:id", (req, res, next) => {
     UserController.getUserUpdate(req, res);
