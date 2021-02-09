@@ -3,7 +3,7 @@ const validator = require("express-joi-validation").createValidator({});
 const response = require("../middlewares/Response");
 const UserController = require("../controllers/User.Controller");
 const UserValidateSchema = require("../models/User.Validation.Model");
-const Authorization = require("../middlewares/Auth");
+const Authorization = require("../middlewares/Authorization");
 
 function UserRouter(app) {
   const router = express.Router();

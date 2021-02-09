@@ -12,7 +12,7 @@ async function Create(req, res) {
     create = await new UserSchema({ name, email, password, avatar })
       .save()
       .then((items) => {
-        const payload = { user: { id: items.id } };
+        const payload = { user: { id: items.email } };
         jwt.sign(
           payload,
           config.jwtSecret,
@@ -42,7 +42,7 @@ async function Users() {
 }
 
 async function User(id) {
-  const user = await UserSchema.findById(id);
+  const user = await UserSchema.findById(id).select("-password");
   return user || {};
 }
 
