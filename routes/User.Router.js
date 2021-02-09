@@ -27,7 +27,7 @@ function UserRouter(app) {
 
   router.post(
     "/login/up",
-    validator.query(UserValidateSchema),
+    validator.body(UserValidateSchema),
     (req, res, next) => {
       UserController.CreateUser(req, res);
     }
