@@ -25,21 +25,13 @@ function UserRouter(app) {
       );
   });
 
-  router.post(
-    "/login/up",
-    ValidationHandler(UserValidateSchema),
-    (req, res, next) => {
-      UserController.CreateUser(req, res);
-    }
-  );
+  router.post("/login/up", (req, res, next) => {
+    UserController.CreateUser(req, res);
+  });
 
-  router.put(
-    "/login/update/:id",
-    ValidationHandler(UserValidateSchema),
-    (req, res, next) => {
-      UserController.getUserUpdate(req, res);
-    }
-  );
+  router.put("/login/update/:id", (req, res, next) => {
+    UserController.getUserUpdate(req, res);
+  });
 }
 
 module.exports = UserRouter;
