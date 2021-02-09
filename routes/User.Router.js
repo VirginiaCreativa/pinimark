@@ -33,9 +33,25 @@ function UserRouter(app) {
       avatar: req.body.avatar,
     };
 
-    UserController.CreateUser(res, userAdd.email, userAdd)
+    UserController.CreateUser(res, userAdd)
       .then((data) => {
-        response.success(userAdd.email, res, data, "Create User", 201);
+        response.success(req, res, data, "Create User", 201);
+      })
+      .catch((err) => {
+        response.error(req, res, "Infomacion invalida", 400, err);
+      });
+  });
+
+  router.get("/update/:id", (req, res, next) => {
+    const userAdd = {
+      name: req.body.name,
+      email: req.body.email,
+      password: req.body.password,
+      avatar: req.body.avatar,
+    };
+    UserController.getUserUpdate(req.params.id, userAdd)
+      .then((data) => {
+        response.success(req, res, data, "Update User", 201);
       })
       .catch((err) => {
         response.error(req, res, "Infomacion invalida", 400, err);

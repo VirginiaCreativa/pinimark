@@ -1,5 +1,4 @@
 const chalk = require("chalk");
-const UserController = require("../controllers/User.Controller");
 
 exports.success = (req, res, items, msg, status = 200) => {
   return res.status(status).send({
