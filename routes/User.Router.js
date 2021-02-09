@@ -42,7 +42,7 @@ function UserRouter(app) {
       });
   });
 
-  router.get("/update/:id", (req, res, next) => {
+  router.put("/update/:id", (req, res, next) => {
     const userAdd = {
       name: req.body.name,
       email: req.body.email,
@@ -51,7 +51,7 @@ function UserRouter(app) {
     };
     UserController.getUserUpdate(req.params.id, userAdd)
       .then((data) => {
-        response.success(req, res, data, "Update User", 201);
+        response.success(req, res, data, "Update User", 200);
       })
       .catch((err) => {
         response.error(req, res, "Infomacion invalida", 400, err);

@@ -24,11 +24,15 @@ async function User(id) {
 async function UserUpdate(id, tags) {
   console.log(">>>>>", id);
   const update = await UserSchema.findById(id).then((data) => {
-    console.log(data);
-    // data
-    //   .save()
-    //   .then(() => console.log("Udpate"))
-    //   .catch((err) => console.log(err));
+    data.name = tags.name;
+    data.email = tags.email;
+    data.password = tags.password;
+    data.avatar = tags.avatar;
+
+    data
+      .save()
+      .then(() => console.log("Udpate"))
+      .catch((err) => console.log(err));
   });
   return update || {};
 }
