@@ -7,7 +7,7 @@ const UserValidateSchema = require("../models/User.Validation.Model");
 
 function UserRouter(app) {
   const router = express.Router();
-  app.use("/login", router);
+  app.use("/user", router);
 
   router.get("/", (req, res, next) => {
     UserController.getUsers()
@@ -25,38 +25,21 @@ function UserRouter(app) {
       );
   });
 
-  router.post("/", ValidationHandler(UserValidateSchema), (req, res, next) => {
-    const userAdd = {
-      name: req.body.name,
-      email: req.body.email,
-      password: req.body.password,
-      avatar: req.body.avatar,
-    };
+  router.post(
+    "/login/up",
+    ValidationHandler(UserValidateSchema),
+    (req, res, next) => {
+      UserController.CreateUser(req, res);
+    }
+  );
 
-    UserController.CreateUser(res, userAdd)
-      .then((data) => {
-        response.success(req, res, data, "Create User", 201);
-      })
-      .catch((err) => {
-        response.error(req, res, "Infomacion invalida", 400, err);
-      });
-  });
-
-  router.put("/update/:id", (req, res, next) => {
-    const userAdd = {
-      name: req.body.name,
-      email: req.body.email,
-      password: req.body.password,
-      avatar: req.body.avatar,
-    };
-    UserController.getUserUpdate(req.params.id, userAdd)
-      .then((data) => {
-        response.success(req, res, data, "Update User", 200);
-      })
-      .catch((err) => {
-        response.error(req, res, "Infomacion invalida", 400, err);
-      });
-  });
+  router.put(
+    "/login/update/:id",
+    ValidationHandler(UserValidateSchema),
+    (req, res, next) => {
+      UserController.getUserUpdate(req, res);
+    }
+  );
 }
 
 module.exports = UserRouter;

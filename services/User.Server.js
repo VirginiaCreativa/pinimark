@@ -1,11 +1,17 @@
 const UserSchema = require("../models/User.Model");
 
-async function Create(res, tags) {
-  let create = await UserSchema.findOne({ email: tags.email });
+async function Create(req, res) {
+  const { name, email, password, avatar } = req.body;
+  let create = await UserSchema.findOne({ email });
   if (create) {
-    res.status(400).json({ msg: "User already existe" });
+    res.status(400).send({ message: "User already existe" });
   } else {
-    create = new UserSchema(tags).save();
+    create = await new UserSchema({ name, email, password, avatar })
+      .save()
+      .then((items) =>
+        res.status(201).send({ message: "Save new user", data: items })
+      )
+      .catch((err) => res.status(201).send({ message: err }));
   }
 
   return create || {};
@@ -21,18 +27,20 @@ async function User(id) {
   return user || {};
 }
 
-async function UserUpdate(id, tags) {
-  console.log(">>>>>", id);
-  const update = await UserSchema.findById(id).then((data) => {
-    data.name = tags.name;
-    data.email = tags.email;
-    data.password = tags.password;
-    data.avatar = tags.avatar;
+async function UserUpdate(req, res) {
+  const { name, email, password, avatar } = req.body;
+  const update = await UserSchema.findById(req.params.id).then((data) => {
+    data.name = name;
+    data.email = email;
+    data.password = password;
+    data.avatar = avatar;
 
     data
       .save()
-      .then(() => console.log("Udpate"))
-      .catch((err) => console.log(err));
+      .then((items) =>
+        res.status(201).send({ message: "Update ID", data: items })
+      )
+      .catch((err) => res.status(201).send({ message: err }));
   });
   return update || {};
 }
