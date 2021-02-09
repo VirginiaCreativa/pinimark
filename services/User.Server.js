@@ -16,14 +16,19 @@ async function Create(req, res) {
         jwt.sign(
           payload,
           config.jwtSecret,
-          { expiresIn: 360000 },
+          { expiresIn: 36000 },
           (err, token) => {
-            if (err) throw err;
-            res.send({ token });
-            console.log(token);
+            if (err) {
+              throw err;
+            } else {
+              res.status(201).send({
+                message: "Save new user",
+                data: items,
+                token,
+              });
+            }
           }
         );
-        res.status(201).send({ message: "Save new user", data: items });
       })
       .catch((err) => res.status(201).send({ message: err }));
   }
