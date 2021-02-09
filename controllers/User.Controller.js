@@ -11,3 +11,6 @@ exports.getUser = (id) =>
 
 exports.getUserUpdate = (req, res) =>
   new Promise((resolve, reject) => resolve(UserServices.UserUpdate(req, res)));
+
+exports.getLogin = (req, res) =>
+  new Promise((resolve, reject) => resolve(UserServices.Login(req, res)));

@@ -1,5 +1,6 @@
 const UserSchema = require("../models/User.Model");
 const jwt = require("jsonwebtoken");
+const bcrypt = require("bcryptjs");
 const { config } = require("../config/config");
 
 async function Create(req, res) {
@@ -64,4 +65,12 @@ async function UserUpdate(req, res) {
   return update || {};
 }
 
-module.exports = { Create, Users, User, UserUpdate };
+async function Login(req, res) {
+  const { email, password } = req.body;
+  const user = await UserSchema.findOne({ email, password }).select(
+    "-password"
+  );
+  return user || {};
+}
+
+module.exports = { Create, Users, User, UserUpdate, Login };
