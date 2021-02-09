@@ -25,7 +25,7 @@ app.use(cors({ origin: true, credentials: true }));
 UserRouter(app);
 
 app.get("/", (req, res, next) => {
-  res.send("Santi, eres mariquita");
+  res.send("Hello");
 });
 
 app.listen(config.port, () => {
