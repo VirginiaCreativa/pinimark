@@ -1,7 +1,6 @@
 const express = require("express");
-
+const validator = require("express-joi-validation").createValidator({});
 const response = require("../middlewares/Response");
-const ValidationHandler = require("../middlewares/ValidationHandler");
 const UserController = require("../controllers/User.Controller");
 const UserValidateSchema = require("../models/User.Validation.Model");
 
@@ -27,7 +26,7 @@ function UserRouter(app) {
 
   router.post(
     "/login/up",
-    ValidationHandler(UserValidateSchema),
+    validator.query(UserValidateSchema),
     (req, res, next) => {
       UserController.CreateUser(req, res);
     }
