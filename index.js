@@ -30,6 +30,6 @@ app.get("/", (req, res, next) => {
 
 app.listen(config.port, () => {
   console.log(
-    chalk.hex("#fff").bgBlue.bold(`litening http://localhost:${config.port}`)
+    chalk.hex("#fff").bgBlue.bold(`listening http://localhost:${config.port}`)
   );
 });

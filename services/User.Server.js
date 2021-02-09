@@ -1,16 +1,30 @@
 const UserSchema = require("../models/User.Model");
+const jwt = require("jsonwebtoken");
+const { config } = require("../config/config");
 
 async function Create(req, res) {
   const { name, email, password, avatar } = req.body;
+
   let create = await UserSchema.findOne({ email });
   if (create) {
     res.status(400).send({ message: "User already existe" });
   } else {
     create = await new UserSchema({ name, email, password, avatar })
       .save()
-      .then((items) =>
-        res.status(201).send({ message: "Save new user", data: items })
-      )
+      .then((items) => {
+        const payload = { user: { id: items.id } };
+        jwt.sign(
+          payload,
+          config.jwtSecret,
+          { expiresIn: 360000 },
+          (err, token) => {
+            if (err) throw err;
+            res.send({ token });
+            console.log(token);
+          }
+        );
+        res.status(201).send({ message: "Save new user", data: items });
+      })
       .catch((err) => res.status(201).send({ message: err }));
   }
 

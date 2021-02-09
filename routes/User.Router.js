@@ -1,6 +1,9 @@
 const express = require("express");
 
 const response = require("../middlewares/Response");
+const ValidationHandler = require("../middlewares/ValidationHandler");
+const UserController = require("../controllers/User.Controller");
+const UserValidateSchema = require("../models/User.Validation.Model");
 
 function UserRouter(app) {
   const router = express.Router();
@@ -22,9 +25,13 @@ function UserRouter(app) {
       );
   });
 
-  router.post("/login/up", (req, res, next) => {
-    UserController.CreateUser(req, res);
-  });
+  router.post(
+    "/login/up",
+    ValidationHandler(UserValidateSchema),
+    (req, res, next) => {
+      UserController.CreateUser(req, res);
+    }
+  );
 
   router.put("/login/update/:id", (req, res, next) => {
     UserController.getUserUpdate(req, res);
