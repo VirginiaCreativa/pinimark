@@ -3,12 +3,13 @@ const validator = require("express-joi-validation").createValidator({});
 const response = require("../middlewares/Response");
 const UserController = require("../controllers/User.Controller");
 const UserValidateSchema = require("../models/User.Validation.Model");
+const Authorization = require("../middlewares/Auth");
 
 function UserRouter(app) {
   const router = express.Router();
   app.use("/user", router);
 
-  router.get("/", (req, res, next) => {
+  router.get("/", Authorization, (req, res, next) => {
     UserController.getUsers()
       .then((data) => response.success(req, res, data, "Users"))
       .catch((err) =>
@@ -16,7 +17,7 @@ function UserRouter(app) {
       );
   });
 
-  router.get("/:id", (req, res, next) => {
+  router.get("/:id", Authorization, (req, res, next) => {
     UserController.getUser(req.params.id)
       .then((data) => response.success(req, res, data, "User"))
       .catch((err) =>
