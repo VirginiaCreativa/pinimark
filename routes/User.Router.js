@@ -17,8 +17,8 @@ function UserRouter(app) {
       );
   });
 
-  router.get("/:id", Authorization, (req, res, next) => {
-    UserController.getUser(req.params.id)
+  router.get("/current", Authorization, (req, res, next) => {
+    UserController.getUser(req.user)
       .then((data) => response.success(req, res, data, "User"))
       .catch((err) =>
         response.error(req, res, "Infomacion invalida", 400, err)

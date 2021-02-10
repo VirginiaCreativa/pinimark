@@ -43,8 +43,8 @@ async function Users() {
   return users || [];
 }
 
-async function User(id) {
-  const user = await UserSchema.findById(id).select("-password");
+async function User(req) {
+  const user = await UserSchema.findById(req).select("-password");
   return user || {};
 }
 
@@ -79,7 +79,7 @@ async function Login(req, res) {
       return res.status(400).send({ message: "Invalida Password" });
     }
 
-    const payload = { user: { id: user.email } };
+    const payload = { user: { id: user.id } };
     jwt.sign(payload, config.jwtSecret, { expiresIn: 36000 }, (err, token) => {
       if (err) {
         throw err;

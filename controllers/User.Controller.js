@@ -6,8 +6,8 @@ exports.CreateUser = (req, res) =>
 exports.getUsers = (tags) =>
   new Promise((resolve, reject) => resolve(UserServices.Users(tags)));
 
-exports.getUser = (id) =>
-  new Promise((resolve, reject) => resolve(UserServices.User(id)));
+exports.getUser = (req) =>
+  new Promise((resolve, reject) => resolve(UserServices.User(req)));
 
 exports.getUserUpdate = (req, res) =>
   new Promise((resolve, reject) => resolve(UserServices.UserUpdate(req, res)));
