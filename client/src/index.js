@@ -1,6 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
+import "bootstrap/scss/bootstrap.scss";
+import "boxicons";
 import reportWebVitals from "./reportWebVitals";
 
 ReactDOM.render(
