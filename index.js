@@ -11,12 +11,10 @@ const { config } = require("./config/config");
 const MongooseLib = require("./lib/mongoose");
 const UserRouter = require("./routes/User.Router");
 
-if (process.env.NODE_ENV !== "production") {
-  app.use(express.static("client/build"));
-  app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname, "/client", "build", "index.html"));
-  });
-}
+app.use(express.static("client/public"));
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "/client", "public", "index.html"));
+});
 // ====== CONNECT MONGODB ====== //
 const connect = new MongooseLib();
 connect.connect();
