@@ -1,6 +1,7 @@
 const express = require("express");
 
 const app = express();
+const path = require("path");
 const cors = require("cors");
 const logger = require("morgan");
 const chalk = require("chalk");
@@ -10,6 +11,12 @@ const { config } = require("./config/config");
 const MongooseLib = require("./lib/mongoose");
 const UserRouter = require("./routes/User.Router");
 
+if (process.env.NODE_ENV !== "production") {
+  app.use(express.static("client/build"));
+  app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "/client", "build", "index.html"));
+  });
+}
 // ====== CONNECT MONGODB ====== //
 const connect = new MongooseLib();
 connect.connect();
@@ -21,12 +28,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cors({ origin: true, credentials: true }));
 
+// ====== CLIENT ====== //
+
 // ====== CONTROLLERS ROUTES ====== //
 UserRouter(app);
-
-app.get("/", (req, res, next) => {
-  res.send("Hello");
-});
 
 app.listen(config.port, () => {
   console.log(
