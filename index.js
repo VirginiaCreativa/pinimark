@@ -11,11 +11,6 @@ const { config } = require("./config/config");
 const MongooseLib = require("./lib/mongoose");
 const UserRouter = require("./routes/User.Router");
 
-app.use(express.static("client"));
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "client", "public", "index.html"));
-});
-
 // ====== CONNECT MONGODB ====== //
 const connect = new MongooseLib();
 connect.connect();
@@ -31,6 +26,19 @@ app.use(cors({ origin: true, credentials: true }));
 
 // ====== CONTROLLERS ROUTES ====== //
 UserRouter(app);
+
+app.use(express.static("client"));
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "client", "public", "index.html"));
+});
+
+// ==== STATIC FILES ==== //
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("client/build"));
+  app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "client", "build", "index.html"));
+  });
+}
 
 app.listen(config.port, () => {
   console.log(
