@@ -11,7 +11,7 @@ const { config } = require("./config/config");
 const MongooseLib = require("./lib/mongoose");
 const UserRouter = require("./routes/User.Router");
 
-app.use(express.static(path.join(__dirname, "client")));
+app.use(express.static("client"));
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "client", "public", "index.html"));
 });

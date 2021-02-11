@@ -4,11 +4,12 @@
   "description": "Diccianios varios apis",
   "main": "index.js",
   "scripts": {
+    "prueba": "cd client && npm start",
     "client-install": "npm install --prefix client",
-    "start": "node server.js",
-    "server": "nodemon server.js",
+    "start": "node index.js",
+    "server": "nodemon index.js",
     "client": "npm run start --prefix client",
-    "dev": "concurrently \"npm run client\" \"npm run server\"",
+    "dev": "concurrently  \"npm run server\" \"npm run client\"",
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
   },
   "repository": {
