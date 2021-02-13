@@ -1,5 +1,5 @@
-import { BrowserRouter as Router } from "react-router-dom";
-import { history } from "../redux/store/store";
+import { BrowserRouter as Router } from 'react-router-dom';
+import { history } from './redux/store/store';
 
 const App = () => {
   return (

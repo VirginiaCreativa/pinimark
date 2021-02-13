@@ -4,7 +4,7 @@ import Variables from './VariableStyled';
 const GlobalStyled = createGlobalStyle`
   body {
     background: ${Variables.body};
-    font-family:  'Quicksand', sans-serif !important;
+    font-family:  'Poppins', sans-serif !important;
   }
   a {
     text-decoration: none !important;
