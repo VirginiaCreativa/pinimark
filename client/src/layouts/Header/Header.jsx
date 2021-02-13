@@ -1,14 +1,20 @@
 import React from 'react';
+import styled from 'styled-components';
+import Logo from '../../common/Logo/LogoIcon';
 
+const HeaderStyled = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px;
+`;
 const Header = () => {
   return (
-    <>
-      <div className="row">
-        <div className="col">logo</div>
-        <div className="col">search</div>
-        <div className="col">admin</div>
-      </div>
-    </>
+    <HeaderStyled>
+      <Logo />
+      <div>search</div>
+      <div>admin</div>
+    </HeaderStyled>
   );
 };
 
