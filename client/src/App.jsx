@@ -1,14 +1,16 @@
+import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { history } from './redux/store/store';
+import Routes from './routes/Routes';
+import Layouts from './layouts/Layout';
 
-const App = () => {
-  return (
-    <>
-      <Router history={history}>
-        <h1>Virginia Velásquez Soto v2</h1>
-      </Router>
-    </>
-  );
-};
-
+const App = () => (
+  <>
+    <Router history={history}>
+      <Layouts>
+        <Routes />
+      </Layouts>
+    </Router>
+  </>
+);
 export default App;
