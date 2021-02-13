@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Switch, Route } from 'react-router-dom';
 import Home from '../containers/Home';
-import User from '../containers/Palabra';
+import Palabra from '../containers/Palabra';
 
 const Routes = () => {
   return (
@@ -11,8 +11,8 @@ const Routes = () => {
         <Route exact path="/">
           <Home />
         </Route>
-        <Route exact path="/user">
-          <User />
+        <Route exact path="/palabra">
+          <Palabra />
         </Route>
       </Switch>
     </>
