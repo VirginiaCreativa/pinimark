@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Logo from '../../common/Logo/LogoIcon';
+import Search from '../../components/Search/Search';
 
 const HeaderStyled = styled.div`
   display: flex;
@@ -12,7 +13,7 @@ const Header = () => {
   return (
     <HeaderStyled>
       <Logo />
-      <div>search</div>
+      <Search>search</Search>
       <div>admin</div>
     </HeaderStyled>
   );
