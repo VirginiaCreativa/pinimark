@@ -4,10 +4,12 @@
     "stylelint-config-concentric-order",
     "stylelint-config-standard",
     "stylelint-config-styled-components",
-    "stylelint-config-prettier"
+    "stylelint-config-prettier",
+    "stylelint-config-sass-guidelines"
   ],
   "plugins": [
-    "stylelint-order"
+    "stylelint-order",
+    "stylelint-scss"
   ],
   "rules": {
     "at-rule-empty-line-before": null,
