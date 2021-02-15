@@ -7,7 +7,6 @@ import reportWebVitals from './reportWebVitals';
 import App from './App';
 import GlobalStyled from './styles/GlobalStyled';
 import 'bootstrap/scss/bootstrap.scss';
-import 'boxicons';
 
 const initialState = {};
 const store = createReduxStore(initialState);

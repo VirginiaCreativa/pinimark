@@ -4,25 +4,25 @@ import Variables from '../../styles/VariableStyled';
 
 const SearchStyled = styled.div`
   position: relative;
-  box-icon[name='search'] {
+  .bx {
     position: absolute;
     top: 4px;
     right: 10px;
   }
 `;
 const InputStyled = styled.input`
-  border: none;
-  border-radius: 100px;
-  background-color: ${Variables.grey0};
-  padding: 8px 16px;
   width: 20vw;
+  padding: 8px 16px;
   font-size: 0.8rem;
+  background-color: ${Variables.grey0};
+  border: 0;
+  border-radius: 100px;
 `;
 
 const Search = () => {
   return (
     <SearchStyled>
-      <box-icon name="search"></box-icon>
+      <i class="bx bx-search"></i>
       <InputStyled
         type="text"
         name="search"

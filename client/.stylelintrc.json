@@ -4,12 +4,11 @@
     "stylelint-config-concentric-order",
     "stylelint-config-standard",
     "stylelint-config-styled-components",
-    "stylelint-config-prettier",
-    "stylelint-config-sass-guidelines"
+    "stylelint-config-prettier"
   ],
   "plugins": [
     "stylelint-order",
-    "stylelint-scss"
+    "stylelint-config-rational-order/plugin"
   ],
   "rules": {
     "at-rule-empty-line-before": null,
@@ -20,6 +19,11 @@
     "number-leading-zero": null,
     "declaration-no-important": null,
     "selector-class-pattern": null,
-    "declaration-colon-newline-after": null
+    "declaration-colon-newline-after": null,
+    "order/properties-order": [],
+    "plugin/rational-order": [true, {
+      "border-in-box-model": false,
+      "empty-line-between-groups": false
+    }]
   }
 }
