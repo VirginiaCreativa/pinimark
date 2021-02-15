@@ -1,10 +1,14 @@
 {
   "extends": [
     "airbnb",
+    "airbnb/hooks",
     "plugin:prettier/recommended",
     "eslint:recommended",
     "prettier/standard",
-    "plugin:react/recommended"
+    "plugin:react/recommended",
+    "plugin:compat/recommended",
+    "plugin:cypress/recommended",
+    "plugin:jsx-a11y/recommended"
   ],
   "env": {
     "es6": true,
@@ -16,14 +20,25 @@
   "parser": "babel-eslint",
   "parserOptions": {
     "ecmaVersion": 8,
-     "sourceType": "module",
+    "sourceType": "module",
     "ecmaFeatures": {
       "jsx": true,
       "modules": true,
       "experimentalObjectRestSpread": true
     }
   },
-  "plugins": ["jsx-a11y"],
+  "plugins": [
+    "react",
+    "react-hooks",
+    "jsx-a11y",
+    "prettier",
+    "compat",
+    "html",
+    "jest",
+    "prettier",
+    "react-hooks",
+    "import"
+  ],
   "rules": {
     "semi": 2,
     "prettier/prettier": [
@@ -51,10 +66,7 @@
         "allowTemplateLiterals": true
       }
     ],
-    "import/no-unresolved": [
-      2,
-      { "caseSensitive": false }
-    ],
+    "import/no-unresolved": [2, { "caseSensitive": false }],
     "no-unused-vars": 0,
     "no-shadow": "off",
     "no-restricted-syntax": [
@@ -68,6 +80,13 @@
     "jsx-a11y/mouse-events-have-key-events": 0,
     "no-return-assign": ["error", "except-parens"],
     "no-process-env": "off",
-    "class-methods-use-this":"off"
+    "class-methods-use-this": "off",
+    "react/self-closing-comp": "off",
+     "react/jsx-filename-extension": [
+      1,
+      {
+        "extensions": [".js", ".jsx"]
+      }
+    ],
   }
 }
