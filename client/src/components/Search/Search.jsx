@@ -8,6 +8,7 @@ const InputStyled = styled.input`
   background-color: ${Variables.grey0};
   padding: 8px 16px;
   width: 30%;
+  font-size: 0.8rem;
 `;
 
 const Search = () => {
