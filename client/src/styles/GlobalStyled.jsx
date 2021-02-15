@@ -3,8 +3,8 @@ import Variables from './VariableStyled';
 
 const GlobalStyled = createGlobalStyle`
   body {
-    background: ${Variables.body};
     font-family:  'Poppins', sans-serif !important;
+    background: ${Variables.body};
   }
   a {
     text-decoration: none !important;
@@ -19,15 +19,15 @@ const GlobalStyled = createGlobalStyle`
   h5,
   h6 {
     margin-bottom: 0;
-    letter-spacing: -1px;
     color: ${Variables.black};
+    letter-spacing: -1px;
   }
   p,
   li,
   abbr {
     color: ${Variables.black};
-    font-size: 0.9rem;
     font-weight: 300;
+    font-size: 0.9rem;
   }
   *:focus {
     outline: none !important;
@@ -50,8 +50,8 @@ const GlobalStyled = createGlobalStyle`
   li,
   span {
     ::selection {
-      background-color: ${Variables.blue1};
       color: #fff;
+      background-color: ${Variables.blue1};
     }
   }
 `;

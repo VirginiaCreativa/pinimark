@@ -33,7 +33,7 @@ const InputStyled = styled.input`
 const Search = () => {
   return (
     <SearchStyled>
-      <Button>
+      <Button type="button">
         <i class="bx bx-search"></i>
       </Button>
       <InputStyled
