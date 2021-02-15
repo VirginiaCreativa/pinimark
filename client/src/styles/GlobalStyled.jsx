@@ -7,8 +7,10 @@ const GlobalStyled = createGlobalStyle`
     background: ${Variables.body};
   }
   a {
+    color: ${Variables.black1};
     text-decoration: none !important;
     :hover {
+      color: ${Variables.blue1};
       text-decoration: none !important;
     }
   }
@@ -19,13 +21,13 @@ const GlobalStyled = createGlobalStyle`
   h5,
   h6 {
     margin-bottom: 0;
-    color: ${Variables.black};
+    color: ${Variables.black1};
     letter-spacing: -1px;
   }
   p,
   li,
   abbr {
-    color: ${Variables.black};
+    color: ${Variables.black1};
     font-weight: 300;
     font-size: 0.9rem;
   }

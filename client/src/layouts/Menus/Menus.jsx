@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 import Variables from '../../styles/VariableStyled';
 
 const MenuStyled = styled.div`
@@ -60,13 +61,15 @@ const Menus = () => {
         <ul className="list-unstyled">
           <li>
             <i class="bx bx-bookmarks"></i>
-            Mis marcadores
+            <Link>Mis marcadores</Link>
           </li>
           <li>
-            <i class="bx bxs-cog"></i>Configuración
+            <i class="bx bxs-cog"></i>
+            <Link>Configuración</Link>
           </li>
           <li>
-            <i class="bx bx-exit"></i>Salir
+            <i class="bx bx-exit"></i>
+            <Link>Salir</Link>
           </li>
         </ul>
       </SubMenu>
