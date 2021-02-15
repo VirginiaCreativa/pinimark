@@ -1,13 +1,10 @@
 {
   "extends": [
     "airbnb",
-    "airbnb/hooks",
     "plugin:prettier/recommended",
     "eslint:recommended",
     "prettier/standard",
     "plugin:react/recommended",
-    "plugin:compat/recommended",
-    "plugin:cypress/recommended",
     "plugin:jsx-a11y/recommended"
   ],
   "env": {
@@ -27,18 +24,7 @@
       "experimentalObjectRestSpread": true
     }
   },
-  "plugins": [
-    "react",
-    "react-hooks",
-    "jsx-a11y",
-    "prettier",
-    "compat",
-    "html",
-    "jest",
-    "prettier",
-    "react-hooks",
-    "import"
-  ],
+  "plugins": ["jsx-a11y", "prettier", "import"],
   "rules": {
     "semi": 2,
     "prettier/prettier": [

@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import Variables from '../../styles/VariableStyled';
+import Variables from '../../../styles/VariableStyled';
 
 const MenuStyled = styled.div`
   position: relative;
@@ -49,30 +49,34 @@ const SubMenu = styled.div`
 `;
 
 const Menus = () => {
+  const [btnSubMenu, setBtnSubMenu] = useState(false);
+
   return (
     <MenuStyled>
       <Button type="button">
-        <i class="bx bx-bookmark"></i>
+        <i className="bx bx-bookmark"></i>
       </Button>
-      <Button type="button">
-        <i class="bx bx-user"></i>
+      <Button type="button" onClick={() => setBtnSubMenu(!btnSubMenu)}>
+        <i className="bx bx-user"></i>
       </Button>
-      <SubMenu>
-        <ul className="list-unstyled">
-          <li>
-            <i class="bx bx-bookmarks"></i>
-            <Link>Mis marcadores</Link>
-          </li>
-          <li>
-            <i class="bx bxs-cog"></i>
-            <Link>Configuración</Link>
-          </li>
-          <li>
-            <i class="bx bx-exit"></i>
-            <Link>Salir</Link>
-          </li>
-        </ul>
-      </SubMenu>
+      {btnSubMenu && (
+        <SubMenu>
+          <ul className="list-unstyled">
+            <li>
+              <i className="bx bx-bookmarks"></i>
+              <Link to="marcadores">Mis marcadores</Link>
+            </li>
+            <li>
+              <i className="bx bxs-cog"></i>
+              <Link to="configuracion">Configuración</Link>
+            </li>
+            <li>
+              <i className="bx bx-exit"></i>
+              <Link to="logout">Salir</Link>
+            </li>
+          </ul>
+        </SubMenu>
+      )}
     </MenuStyled>
   );
 };

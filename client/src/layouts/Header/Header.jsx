@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Logo from '../../common/Logo/LogoIcon';
 import Search from '../../components/Search/Search';
-import Menus from '../Menus/Menus';
+import Menus from './Menus/Menus';
 
 const HeaderStyled = styled.div`
   display: flex;
