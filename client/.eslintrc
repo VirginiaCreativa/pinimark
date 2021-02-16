@@ -40,32 +40,11 @@
     "import"
   ],
   "rules": {
+    "quotes": [2, "single", { "avoidEscape": true }],
     "semi": 2,
-    "prettier/prettier": [
-      "error",
-      {
-        "trailingComma": "all",
-        "singleQuote": true,
-        "printWidth": 80,
-        "semi": true,
-        "jsxBracketSameLine": true,
-        "usePrettierrc": true,
-        "parser": "flow",
-        "arrowParens": "always",
-        "tabWidth": 2
-      }
-    ],
     "no-console": "off",
     "react/prop-types": 0,
     "global-require": 0,
-    "quotes": [
-      2,
-      "single",
-      {
-        "avoidEscape": true,
-        "allowTemplateLiterals": true
-      }
-    ],
     "import/no-unresolved": [2, { "caseSensitive": false }],
     "no-unused-vars": 0,
     "no-shadow": "off",
@@ -87,6 +66,7 @@
       {
         "extensions": [".js", ".jsx"]
       }
-    ]
+    ],
+    "react/jsx-closing-bracket-location": "off"
   }
 }

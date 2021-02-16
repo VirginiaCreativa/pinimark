@@ -13,11 +13,14 @@ const Button = styled.button`
   background-color: transparent;
   border: 0;
   .bx {
-    color: ${Variables.grey3};
+    color: ${Variables.grey1};
     font-size: 18px;
     &:hover {
       color: ${Variables.blue1};
     }
+  }
+  .bx-user {
+    color: ${(props) => props.activeuser};
   }
 `;
 
@@ -54,6 +57,7 @@ const Menus = () => {
   const [userCurrent, setUserCurrent] = useState(false);
 
   useEffect(() => {
+    console.log(btnSubMenu);
     axios
       .get('http://localhost:3000/user/current', {
         headers: {
@@ -64,12 +68,12 @@ const Menus = () => {
       .then((res) => setUserCurrent(res.data.data.name))
       .catch((err) => console.error(err));
     // ===== BOX SUBMENU =====//
-    const boxSubMenu = document.querySelector('body');
-    if (boxSubMenu) {
-      boxSubMenu.addEventListener('mouseover', (ev) => {
-        if (ev.layerY >= 112) {
-          setBtnSubMenu(false);
-        }
+    const bodyBox = document.querySelector('body');
+    if (bodyBox) {
+      bodyBox.addEventListener('click', (ev) => {
+        // if (ev.clientY >= 217) {
+        //   setBtnSubMenu(false);
+        // }
       });
     }
   });
@@ -79,7 +83,10 @@ const Menus = () => {
       <Button type="button">
         <i className="bx bx-bookmark"></i>
       </Button>
-      <Button type="button" onClick={() => setBtnSubMenu(!btnSubMenu)}>
+      <Button
+        type="button"
+        activeuser={btnSubMenu ? '#2868ee' : '#a4b0be'}
+        onClick={() => setBtnSubMenu(!btnSubMenu)}>
         <i className="bx bx-user"></i>
       </Button>
       {btnSubMenu && (
