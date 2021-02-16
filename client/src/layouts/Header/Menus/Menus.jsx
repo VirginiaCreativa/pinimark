@@ -51,6 +51,17 @@ const SubMenu = styled.div`
 const Menus = () => {
   const [btnSubMenu, setBtnSubMenu] = useState(false);
 
+  useEffect(() => {
+    const boxSubMenu = document.querySelector('body');
+    if (boxSubMenu) {
+      boxSubMenu.addEventListener('mouseover', (ev) => {
+        if (ev.layerY >= 112) {
+          setBtnSubMenu(false);
+        }
+      });
+    }
+  });
+
   return (
     <MenuStyled>
       <Button type="button">
@@ -60,7 +71,7 @@ const Menus = () => {
         <i className="bx bx-user"></i>
       </Button>
       {btnSubMenu && (
-        <SubMenu>
+        <SubMenu className="boxSubMenu">
           <ul className="list-unstyled">
             <li>
               <i className="bx bx-bookmarks"></i>
