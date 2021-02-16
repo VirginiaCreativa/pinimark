@@ -1,9 +1,9 @@
 const chalk = require("chalk");
 
-exports.success = (req, res, items, msg, status = 200) => {
+exports.success = (req, res, data, msg, status = 200) => {
   return res.status(status).send({
     message: msg,
-    data: items,
+    data,
   });
 };
 

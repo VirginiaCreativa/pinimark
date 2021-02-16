@@ -9,7 +9,8 @@ import createRootReducer from '../reducers/reducer';
 export const history = createBrowserHistory();
 
 const logger = createLogger({
-  predicate: (getState, action) => !action.type.includes('@@redux-form'),
+  level: 'info',
+  collapsed: true,
 });
 
 export default function createReduxStore(preloadedState) {

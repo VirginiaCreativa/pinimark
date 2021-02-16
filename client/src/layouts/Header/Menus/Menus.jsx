@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import axios from 'axios';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import Variables from '../../../styles/VariableStyled';
@@ -24,7 +25,7 @@ const SubMenu = styled.div`
   position: absolute;
   top: 30px;
   right: 0;
-  width: 170px;
+  width: 200px;
   padding: 15px;
   border-radius: 6px;
   box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.1);
@@ -50,8 +51,19 @@ const SubMenu = styled.div`
 
 const Menus = () => {
   const [btnSubMenu, setBtnSubMenu] = useState(false);
+  const [userCurrent, setUserCurrent] = useState(false);
 
   useEffect(() => {
+    axios
+      .get('http://localhost:3000/user/current', {
+        headers: {
+          'x-access-token':
+            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjAyMzBjMWJiOTEwMjczNzIwNGUyZjA2In0sImlhdCI6MTYxMzQ5MTY4NSwiZXhwIjoxNjEzNTI3Njg1fQ.K5bWmaaINeXJvPUvV1Owf-nqIZFMTEqEfushHcaGV70',
+        },
+      })
+      .then((res) => setUserCurrent(res.data.data.name))
+      .catch((err) => console.error(err));
+    // ===== BOX SUBMENU =====//
     const boxSubMenu = document.querySelector('body');
     if (boxSubMenu) {
       boxSubMenu.addEventListener('mouseover', (ev) => {
@@ -73,6 +85,9 @@ const Menus = () => {
       {btnSubMenu && (
         <SubMenu className="boxSubMenu">
           <ul className="list-unstyled">
+            <li>
+              <p>{userCurrent || 'Desconocido'}</p>
+            </li>
             <li>
               <i className="bx bx-bookmarks"></i>
               <Link to="marcadores">Mis marcadores</Link>

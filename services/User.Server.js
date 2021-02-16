@@ -43,8 +43,16 @@ async function Users() {
   return users || [];
 }
 
-async function User(req) {
-  const user = await UserSchema.findById(req).select("-password");
+async function User(req, res) {
+  const user = await UserSchema.findById(req)
+    .select("-password")
+    .then((data) =>
+      res.status(200).send({
+        message: "User current",
+        data,
+      })
+    )
+    .catch((err) => res.status(201).send({ message: err }));
   return user || {};
 }
 
