@@ -57,7 +57,6 @@ const Menus = () => {
   const [userCurrent, setUserCurrent] = useState(false);
 
   useEffect(() => {
-    console.log(btnSubMenu);
     axios
       .get('http://localhost:3000/user/current', {
         headers: {
@@ -70,10 +69,10 @@ const Menus = () => {
     // ===== BOX SUBMENU =====//
     const bodyBox = document.querySelector('body');
     if (bodyBox) {
-      bodyBox.addEventListener('click', (ev) => {
-        // if (ev.clientY >= 217) {
-        //   setBtnSubMenu(false);
-        // }
+      bodyBox.addEventListener('mouseover', (ev) => {
+        if (ev.clientY >= 220) {
+          setBtnSubMenu(false);
+        }
       });
     }
   });

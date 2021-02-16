@@ -33,6 +33,10 @@ app.get("/*", function (req, res) {
   res.sendFile(path.join(__dirname, "client", "build", "index.html"));
 });
 
+process.on("exit", (code) => {
+  console.log(`About to exit with code: ${code}`);
+});
+
 app.listen(config.port, () => {
   console.log(
     chalk.hex("#fff").bgBlue.bold(`listening http://localhost:${config.port}`)
